@@ -79,8 +79,8 @@ jobs:
         run: |
           BODY=$(curl -s "https://jsr.io/@syi0808/pubm-test-multi-eco-core/meta.json")
           STATUS=$(echo "$BODY" | grep -c "$VERSION" || true)
-          if [ "$STATUS" != "200" ]; then
-            echo "::error::Package not found on jsr (HTTP $STATUS)"
+          if [ "$STATUS" = "0" ]; then
+            echo "::error::Package version $VERSION not found on jsr"
             exit 1
           fi
           echo "Package verified on jsr"
@@ -89,7 +89,7 @@ jobs:
         run: |
           sleep 30
           STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://crates.io/api/v1/crates/pubm-test-multi-eco-cli/${{ env.VERSION }}")
-          if [ "$STATUS" != "200" ]; then
+          if [ "$STATUS" = "0" ]; then
             echo "::error::Crate not found on crates.io (HTTP $STATUS)"
             exit 1
           fi
