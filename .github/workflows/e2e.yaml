@@ -25,7 +25,7 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
 
       - name: Install dependencies
-        run: bun add pubm@${{ inputs.pubm_version || github.event.client_payload.pubm_version || 'latest' }} @pubm/core@${{ inputs.pubm_version || github.event.client_payload.pubm_version || 'latest' }}
+        run: bun add jsr pubm@${{ inputs.pubm_version || github.event.client_payload.pubm_version || 'latest' }} @pubm/core@${{ inputs.pubm_version || github.event.client_payload.pubm_version || 'latest' }}
 
       - name: Setup npm auth
         run: |
