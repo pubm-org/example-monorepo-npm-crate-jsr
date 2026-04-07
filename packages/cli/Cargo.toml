@@ -1,0 +1,6 @@
+[package]
+name = "pubm-test-multi-eco-cli"
+version = "0.0.1"
+edition = "2021"
+license = "MIT"
+description = "pubm E2E test fixture: multi-ecosystem CLI crate"

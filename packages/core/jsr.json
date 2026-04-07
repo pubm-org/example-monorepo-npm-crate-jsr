@@ -1,0 +1,5 @@
+{
+  "name": "@syi0808/pubm-test-multi-eco-core",
+  "version": "0.0.1",
+  "exports": "./src/index.ts"
+}

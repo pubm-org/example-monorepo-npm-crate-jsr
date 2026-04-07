@@ -1,0 +1,5 @@
+{
+  "name": "example-monorepo-npm-crate-jsr",
+  "private": true,
+  "workspaces": ["packages/*"]
+}
