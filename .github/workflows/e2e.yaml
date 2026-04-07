@@ -77,7 +77,8 @@ jobs:
 
       - name: Verify jsr deployment
         run: |
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" "https://jsr.io/@syi0808/pubm-test-multi-eco-core/${VERSION}/meta.json")
+          BODY=$(curl -s "https://jsr.io/@syi0808/pubm-test-multi-eco-core/meta.json")
+          STATUS=$(echo "$BODY" | grep -c "$VERSION" || true)
           if [ "$STATUS" != "200" ]; then
             echo "::error::Package not found on jsr (HTTP $STATUS)"
             exit 1
