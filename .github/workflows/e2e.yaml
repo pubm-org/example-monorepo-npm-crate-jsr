@@ -9,7 +9,7 @@ on:
         default: "latest"
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -54,6 +54,13 @@ jobs:
             }
           "
           sed -i "s/^version = \".*\"/version = \"${VERSION}\"/" packages/cli/Cargo.toml
+
+      - name: Commit version changes
+        run: |
+          git config user.name "pubm-bot"
+          git config user.email "bot@pubm.dev"
+          git add -A
+          git commit -m "chore: bump version for e2e"
 
       - name: Publish
         run: bunx pubm --mode ci --phase publish --any-branch --skip-release
